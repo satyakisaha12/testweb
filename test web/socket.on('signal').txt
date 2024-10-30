@@ -1,0 +1,9 @@
+io.on('connection', (socket) => {
+    socket.on('signal', (data) => {
+        io.to(data.to).emit('signal', { signal: data.signal, from: data.from });
+    });
+
+    socket.on('join-call', (callId) => {
+        socket.join(callId);
+    });
+});
